@@ -1,0 +1,9 @@
+$kind: http-request
+name: New Request
+url: http://127.0.0.1:5000/notes/:id
+method: DELETE
+pathVariables:
+  - key: id
+    value: "2"
+    description: ""
+order: 4283796990978586

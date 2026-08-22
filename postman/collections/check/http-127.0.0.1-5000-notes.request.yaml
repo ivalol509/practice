@@ -1,0 +1,10 @@
+$kind: http-request
+name: http://127.0.0.1:5000/notes
+description: ""
+url: http://127.0.0.1:5000/notes/:id
+method: GET
+pathVariables:
+  - key: id
+    value: "2"
+    description: ""
+order: 1784189992196

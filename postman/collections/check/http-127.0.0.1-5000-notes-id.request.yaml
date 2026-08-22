@@ -1,0 +1,21 @@
+$kind: http-request
+name: http://127.0.0.1:5000/notes/:id
+description: ""
+url: http://127.0.0.1:5000/notes/:id
+method: PUT
+pathVariables:
+  - key: id
+    value: "2"
+    description: ""
+body:
+  type: json
+  content: "{\r
+
+    \  \"username\": \"Volk\",\r
+
+    \  \"text\": \"Auuuuuu\",\r
+
+    \  \"date\": \"24/06/2026\"\r
+
+    }"
+order: 2463712018771491

@@ -6,13 +6,13 @@ notes = {
     1: {
       "id": 1,
       "username": "Koshka",
-      "text": "Первая заметка",
+      "text": "Meow meow meow meow meow meow meow meow",
       "date": "20/06/2026"
     },
     2: {
       "id": 2,
       "username": "Sobaka", 
-      "text": "Вторая заметка",
+      "text": "Woof woof woof woof woof woof woof woof",
       "date": "24/06/2026"
     }
 }
