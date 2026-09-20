@@ -2,9 +2,14 @@ from flask import Flask, request, jsonify
 from db_model import db, Note, Person
 from datetime import datetime
 
+import os
+
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost:5432/notes_db'
+database_url = os.environ.get('DATABASE_URL', 'postgresql://postgres:root@localhost:5432/notes_db')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
