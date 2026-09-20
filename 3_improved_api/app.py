@@ -9,40 +9,41 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+def init_db():
+    with app.app_context():
+        db.create_all()
 
-    if Person.query.first() is None:
-        
-        users_to_add = [
-            Person(name="Алина", email="alina@test.com"),
-            Person(name="Борис", email="boris@test.com"),
-            Person(name="Виктор", email="victor@test.com"),
-            Person(name="Галина", email="galina@test.com"),
-            Person(name="Дмитрий", email="dmitry@test.com")
-        ]
-        db.session.add_all(users_to_add)
-        db.session.commit() 
-        
-        notes_to_add = [
-            Note(user_id=1, title="а", text="Это моя первая заметка про API"),
-            Note(user_id=2, title="бб", text="Яблоки, бананы, сыр"),
-            Note(user_id=2, title="ббб", text="Сделать крутой сервис заметок"),
-            Note(user_id=3, title="в", text="Не забыть про дедлайн по практике"),
-            Note(user_id=2, title="б", text="Проверить работу PostgreSQL"),
-            Note(user_id=4, title="гг", text="Посмотреть Интерстеллар"),
-            Note(user_id=3, title="ввв", text="Прочитать Грокаем алгоритмы"),
-            Note(user_id=1, title="аа", text="Сделать практику и отдохнуть"),
-            Note(user_id=1, title="ааа", text="Купить молоко и хлеб"),
-            Note(user_id=3, title="вв", text="Как приготовить пасту карбонара"),
-            Note(user_id=4, title="г", text="Сходить в зал в 18:00"),
-            Note(user_id=5, title="д", text="Проверить баланс карты"),
-            Note(user_id=5, title="дд", text="Созвон с командой в 15:00"),
-            Note(user_id=4, title="ггг", text="Спланировать поездку в горы"),
-            Note(user_id=5, title="ддд", text="Сдать итоговый отчет по практике")
-        ]
-        db.session.add_all(notes_to_add)
-        db.session.commit()
+        if Person.query.first() is None:
+            
+            users_to_add = [
+                Person(name="Алина", email="alina@test.com"),
+                Person(name="Борис", email="boris@test.com"),
+                Person(name="Виктор", email="victor@test.com"),
+                Person(name="Галина", email="galina@test.com"),
+                Person(name="Дмитрий", email="dmitry@test.com")
+            ]
+            db.session.add_all(users_to_add)
+            db.session.commit() 
+            
+            notes_to_add = [
+                Note(user_id=1, title="а", text="Это моя первая заметка про API"),
+                Note(user_id=2, title="бб", text="Яблоки, бананы, сыр"),
+                Note(user_id=2, title="ббб", text="Сделать крутой сервис заметок"),
+                Note(user_id=3, title="в", text="Не забыть про дедлайн по практике"),
+                Note(user_id=2, title="б", text="Проверить работу PostgreSQL"),
+                Note(user_id=4, title="гг", text="Посмотреть Интерстеллар"),
+                Note(user_id=3, title="ввв", text="Прочитать Грокаем алгоритмы"),
+                Note(user_id=1, title="аа", text="Сделать практику и отдохнуть"),
+                Note(user_id=1, title="ааа", text="Купить молоко и хлеб"),
+                Note(user_id=3, title="вв", text="Как приготовить пасту карбонара"),
+                Note(user_id=4, title="г", text="Сходить в зал в 18:00"),
+                Note(user_id=5, title="д", text="Проверить баланс карты"),
+                Note(user_id=5, title="дд", text="Созвон с командой в 15:00"),
+                Note(user_id=4, title="ггг", text="Спланировать поездку в горы"),
+                Note(user_id=5, title="ддд", text="Сдать итоговый отчет по практике")
+            ]
+            db.session.add_all(notes_to_add)
+            db.session.commit()
 
 @app.route("/")
 def home():
@@ -65,7 +66,7 @@ def get_all_notes():
         'notes': [note.to_dict() for note in pangination.items],
         'page': page,
         'per_page': per_page,
-        'cuont_of_notes': pangination.total,
+        'count_of_notes': pangination.total,
         'pages': pangination.pages
     }), 200
 
@@ -187,4 +188,5 @@ def delete_user(user_id):
 
 
 if __name__ == "__main__":
+    init_db()
     app.run(debug=True)
