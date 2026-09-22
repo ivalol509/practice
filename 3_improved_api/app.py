@@ -16,6 +16,7 @@ db.init_app(app)
 
 def init_db():
     with app.app_context():
+        db.drop_all()
         db.create_all()
 
         if Person.query.first() is None:
@@ -191,7 +192,6 @@ def delete_user(user_id):
     db.session.commit()
     return "", 204
 
-
+init_db()
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
