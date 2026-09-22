@@ -31,21 +31,21 @@ def init_db():
             db.session.commit() 
             
             notes_to_add = [
-                Note(user_id=1, title="а", text="Это моя первая заметка про API"),
+                Note(user_id=1, title="а", text="Это первая заметка"),
                 Note(user_id=2, title="бб", text="Яблоки, бананы, сыр"),
-                Note(user_id=2, title="ббб", text="Сделать крутой сервис заметок"),
-                Note(user_id=3, title="в", text="Не забыть про дедлайн по практике"),
-                Note(user_id=2, title="б", text="Проверить работу PostgreSQL"),
+                Note(user_id=2, title="ббб", text="Аааааааааааааааааааааааааааа"),
+                Note(user_id=3, title="в", text="дедлайн по практике"),
+                Note(user_id=2, title="б", text="PostgreSQL"),
                 Note(user_id=4, title="гг", text="Посмотреть Интерстеллар"),
-                Note(user_id=3, title="ввв", text="Прочитать Грокаем алгоритмы"),
+                Note(user_id=3, title="ввв", text="ааааАааА"),
                 Note(user_id=1, title="аа", text="Сделать практику и отдохнуть"),
                 Note(user_id=1, title="ааа", text="Купить молоко и хлеб"),
-                Note(user_id=3, title="вв", text="Как приготовить пасту карбонара"),
+                Note(user_id=3, title="вв", text="Как приготовить пасту"),
                 Note(user_id=4, title="г", text="Сходить в зал в 18:00"),
                 Note(user_id=5, title="д", text="Проверить баланс карты"),
-                Note(user_id=5, title="дд", text="Созвон с командой в 15:00"),
-                Note(user_id=4, title="ггг", text="Спланировать поездку в горы"),
-                Note(user_id=5, title="ддд", text="Сдать итоговый отчет по практике")
+                Note(user_id=5, title="дд", text="Созвон в 15:00"),
+                Note(user_id=4, title="ггг", text="Спланировать поездку"),
+                Note(user_id=5, title="ддд", text="Сдать итоговый отчет")
             ]
             db.session.add_all(notes_to_add)
             db.session.commit()
